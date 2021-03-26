@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data //auto getters, setters, equals, hashcode
-@Entity
+@Entity //defines that a class can be mapped to a table
 @Table(name="user")
 public class User {
 
