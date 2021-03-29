@@ -4,9 +4,11 @@ import com.raga.serverproductmanagement.model.User;
 import com.raga.serverproductmanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     @Autowired // injects the dependent beans into the associated references of a POJO class by matching the data-type
