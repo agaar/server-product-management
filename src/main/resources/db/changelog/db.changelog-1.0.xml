@@ -5,9 +5,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                http://www.liquibase.org/xml/ns/pro
+        http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.3.xsd
 ">
 
     <changeSet  id="1"  author="aaa">
@@ -41,13 +43,13 @@
     </changeSet>
     <changeSet  id="3"  author="aaa">
         <sql>
-            INSERT INTO product (name, price, explanation) values ("Product 1", 19.99, "Product is so expensive and has many attributes like X, Y, Z ...";
-            INSERT INTO product (name, price, explanation) values ("Product 2", 29.99, "Product is so expensive and has many attributes like X, Y, Z ...";
-            INSERT INTO product (name, price, explanation) values ("Product 3", 39.99, "Product is so expensive and has many attributes like X, Y, Z ...";
-            INSERT INTO product (name, price, explanation) values ("Product 4", 49.99, "Product is so expensive and has many attributes like X, Y, Z ...";
-            INSERT INTO product (name, price, explanation) values ("Product 5", 59.99, "Product is so expensive and has many attributes like X, Y, Z ...";
-            INSERT INTO product (name, price, explanation) values ("Product 6", 69.99, "Product is so expensive and has many attributes like X, Y, Z ...";
-            INSERT INTO product (name, price, explanation) values ("Product 7", 79.99, "Product is so expensive and has many attributes like X, Y, Z ...";
+            INSERT INTO product (name, price, explanation) values ("Product 1", 19.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO product (name, price, explanation) values ("Product 2", 29.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO product (name, price, explanation) values ("Product 3", 39.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO product (name, price, explanation) values ("Product 4", 49.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO product (name, price, explanation) values ("Product 5", 59.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO product (name, price, explanation) values ("Product 6", 69.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO product (name, price, explanation) values ("Product 7", 79.99, "Product is so expensive and has many attributes like X, Y, Z ...");
         </sql>
         <rollback>
             TRUNCATE table product;
