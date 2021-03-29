@@ -93,6 +93,6 @@ public class AdminController {
         Long number = transactionService.numberOfTransations();
         StringResponse response = new StringResponse();
         response.setResponse(number.toString());
-        return ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
