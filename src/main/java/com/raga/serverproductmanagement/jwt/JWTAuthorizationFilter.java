@@ -17,6 +17,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
     public JWTAuthorizationFilter(AuthenticationManager authenticationManager, JwtTokenProvider tokenProvider) {
         super(authenticationManager);
+        jwtTokenProvider = tokenProvider;
     }
 
     @Override

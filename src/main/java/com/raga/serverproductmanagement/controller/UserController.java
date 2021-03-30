@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -63,7 +62,7 @@ public class UserController {
     @PostMapping("/api/user/purchase")
     public ResponseEntity<?> purchaseProduct (@RequestBody Transaction transaction){
         transaction.setPurchaseDate(LocalDateTime.now());
-        return new ResponseEntity<>(transactionService.saveTransaction(transaction),HttpStatus.CREATED);
+        return new ResponseEntity<>(transactionService.saveTransaction(transaction), HttpStatus.CREATED);
     }
 
     @GetMapping("/api/user/products")
