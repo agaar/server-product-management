@@ -14,7 +14,7 @@
 
     <changeSet  id="1"  author="aaa">
        <sql>
-               CREATE TABLE user (
+               CREATE TABLE users (
                     id BIGINT NOT NULL AUTO_INCREMENT,
                     username VARCHAR(255) NOT NULL,
                     password VARCHAR(255) NOT NULL,
@@ -24,12 +24,12 @@
                 );
        </sql>
         <rollback>
-            DROP table user;
+            DROP table users;
         </rollback>
     </changeSet>
     <changeSet  id="2"  author="aaa">
         <sql>
-            CREATE TABLE product (
+            CREATE TABLE products (
             id BIGINT NOT NULL AUTO_INCREMENT,
             name VARCHAR(255) NOT NULL,
             price DOUBLE,
@@ -38,37 +38,37 @@
             );
         </sql>
         <rollback>
-            DROP table product;
+            DROP table products;
         </rollback>
     </changeSet>
     <changeSet  id="3"  author="aaa">
         <sql>
-            INSERT INTO product (name, price, explanation) values ("Product 1", 19.99, "Product is so expensive and has many attributes like X, Y, Z ...");
-            INSERT INTO product (name, price, explanation) values ("Product 2", 29.99, "Product is so expensive and has many attributes like X, Y, Z ...");
-            INSERT INTO product (name, price, explanation) values ("Product 3", 39.99, "Product is so expensive and has many attributes like X, Y, Z ...");
-            INSERT INTO product (name, price, explanation) values ("Product 4", 49.99, "Product is so expensive and has many attributes like X, Y, Z ...");
-            INSERT INTO product (name, price, explanation) values ("Product 5", 59.99, "Product is so expensive and has many attributes like X, Y, Z ...");
-            INSERT INTO product (name, price, explanation) values ("Product 6", 69.99, "Product is so expensive and has many attributes like X, Y, Z ...");
-            INSERT INTO product (name, price, explanation) values ("Product 7", 79.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO products (name, price, explanation) values ("Product 1", 19.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO products (name, price, explanation) values ("Product 2", 29.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO products (name, price, explanation) values ("Product 3", 39.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO products (name, price, explanation) values ("Product 4", 49.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO products (name, price, explanation) values ("Product 5", 59.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO products (name, price, explanation) values ("Product 6", 69.99, "Product is so expensive and has many attributes like X, Y, Z ...");
+            INSERT INTO products (name, price, explanation) values ("Product 7", 79.99, "Product is so expensive and has many attributes like X, Y, Z ...");
         </sql>
         <rollback>
-            TRUNCATE table product;
+            TRUNCATE table products;
         </rollback>
     </changeSet>
     <changeSet  id="4"  author="aaa">
         <sql>
-            CREATE TABLE transaction (
+            CREATE TABLE transactions (
             id BIGINT NOT NULL AUTO_INCREMENT,
             product_id BIGINT NOT NULL,
             user_id BIGINT NOT NULL,
             purchase_date DATETIME NOT NULL,
             CONSTRAINT PK_id PRIMARY KEY (id),
-            CONSTRAINT fK_tran_product FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE ON UPDATE CASCADE,
-            CONSTRAINT fK_tran_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
+            CONSTRAINT fK_tran_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE ON UPDATE CASCADE,
+            CONSTRAINT fK_tran_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
             );
         </sql>
         <rollback>
-            DROP table transaction;
+            DROP table transactions;
         </rollback>
     </changeSet>
 </databaseChangeLog>
