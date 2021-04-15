@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Data //auto getters, setters, equals, hashcode
 @Entity //defines that a class can be mapped to a table
-@Table(name="user")
+@Table(name="users")
 public class User {
 
     @Id

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data //auto getters, setters, equals, hashcode
 @Entity //defines that a class can be mapped to a table
-@Table(name="transaction")
+@Table(name="transactions")
 public class Transaction {
 
     @Id
