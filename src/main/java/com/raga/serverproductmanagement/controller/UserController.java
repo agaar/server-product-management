@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
 
 @RestController
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -46,23 +48,26 @@ public class UserController {
 
     @GetMapping("/api/user/login")
     public ResponseEntity<?> getUser(Principal principal){
-        //principal = httpservletrequest.getUserPrincipal();
-        if(principal == null || principal.getName() == null) {
-            //logout will also use here so we should return ok htttp status
+        //principal = httpServletRequest.getUserPrincipal.
+        log.info(String.valueOf("user:" + principal));
+        if(principal == null){
+            //logout will also use here so we should return ok http status.
             return ResponseEntity.ok(principal);
         }
-        UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) principal;
+        UsernamePasswordAuthenticationToken authenticationToken =
+                (UsernamePasswordAuthenticationToken) principal;
         User user = userService.findByUsername(authenticationToken.getName());
-        Authentication authentication = authenticationToken;
+        // Authentication authentication = authenticationToken;
         user.setToken(tokenProvider.generateToken(authenticationToken));
 
-        return new ResponseEntity<>(user,HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
 
     @PostMapping("/api/user/purchase")
     public ResponseEntity<?> purchaseProduct (@RequestBody Transaction transaction){
         transaction.setPurchaseDate(LocalDateTime.now());
-        return new ResponseEntity<>(transactionService.saveTransaction(transaction), HttpStatus.CREATED);
+        return new ResponseEntity<>(transaction, HttpStatus.CREATED);
     }
 
     @GetMapping("/api/user/products")
