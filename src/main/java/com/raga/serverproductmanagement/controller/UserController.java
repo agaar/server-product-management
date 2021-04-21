@@ -1,6 +1,7 @@
 package com.raga.serverproductmanagement.controller;
 
 import com.raga.serverproductmanagement.jwt.JwtTokenProvider;
+import com.raga.serverproductmanagement.model.Product;
 import com.raga.serverproductmanagement.model.Role;
 import com.raga.serverproductmanagement.model.Transaction;
 import com.raga.serverproductmanagement.model.User;
@@ -67,7 +68,7 @@ public class UserController {
     @PostMapping("/api/user/purchase")
     public ResponseEntity<?> purchaseProduct (@RequestBody Transaction transaction){
         transaction.setPurchaseDate(LocalDateTime.now());
-        return new ResponseEntity<>(transaction, HttpStatus.CREATED);
+        return new ResponseEntity<>(transactionService.saveTransaction(transaction), HttpStatus.CREATED);
     }
 
     @GetMapping("/api/user/products")
